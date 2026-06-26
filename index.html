@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Apoorve Goyal. Five years at HackerRank. A farewell." />
+  <title>Apoorve Goyal · HackerRank 2021→2026</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,300;1,14..32,400;1,14..32,600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0a0a0a;
+      --surface:      #111111;
+      --surface2:     #181818;
+      --border:       rgba(255,255,255,0.07);
+      --text:         #f0f0f0;
+      --text-mid:     #888888;
+      --text-dim:     #3a3a3a;
+      --green:        #2EC866;
+      --green-bg:     rgba(46,200,102,0.07);
+      --green-border: rgba(46,200,102,0.22);
+      --green-glow:   rgba(46,200,102,0.04);
+    }
+
+    html { scroll-behavior: smooth; background: var(--bg); }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── PROGRESS ───────────────────────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--green);
+      z-index: 1000;
+      transition: width 0.08s linear;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,10,0.8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hr-mark {
+      width: 26px;
+      height: 26px;
+      background: var(--green);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #0a0a0a;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .nav-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-right {
+      font-size: 12px;
+      color: var(--text-mid);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 40px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 60%, rgba(46,200,102,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(46,200,102,0.02) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      font-size: clamp(60px, 10vw, 128px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-dates {
+      font-size: clamp(20px, 3vw, 32px);
+      font-weight: 300;
+      color: var(--text-mid);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-roles {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-roles .role { color: var(--text-mid); }
+    .hero-roles .sep { color: var(--text-dim); font-size: 10px; }
+    .hero-roles .role-final { color: var(--green); font-weight: 500; }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    .scroll-indicator span {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+    }
+
+    /* ─── SHARED ─────────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 48px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 1px;
+      background: var(--border);
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── STATS ──────────────────────────────────────────────── */
+    #stats {
+      padding: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-cell {
+      padding: 36px 32px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .stat-cell:nth-child(4n) { border-right: none; }
+    .stat-cell:nth-child(n+5) { border-bottom: none; }
+    .stat-cell:hover { background: var(--surface); }
+
+    .stat-num {
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-num.green { color: var(--green); }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-mid);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .stat-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-cell:nth-child(4n) { border-right: 1px solid var(--border); }
+      .stat-cell:nth-child(2n) { border-right: none; }
+      .stat-cell:nth-child(n+7) { border-bottom: none; }
+    }
+
+    /* ─── CHAPTERS ───────────────────────────────────────────── */
+    .chapter {
+      padding: 120px 0;
+    }
+
+    .chapter-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .chapter-num {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .pull-quote {
+      font-size: clamp(30px, 4.5vw, 56px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+
+    .pull-quote em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--green);
+    }
+
+    .chapter-body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .chapter-body p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text-mid);
+    }
+
+    .chapter-body strong { color: var(--text); font-weight: 600; }
+
+    .chapter-rule {
+      width: 36px;
+      height: 2px;
+      background: var(--green);
+      margin: 48px 0;
+    }
+
+    /* ─── CONTRIB RAMP ───────────────────────────────────────── */
+    .ramp-wrap {
+      border: 1px solid var(--border);
+      padding: 32px 36px;
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .ramp-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .ramp-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .ramp-n {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .ramp-n.peak { color: var(--green); }
+
+    .ramp-bar {
+      width: 100%;
+      background: var(--surface2);
+      border-radius: 2px 2px 0 0;
+      min-height: 4px;
+    }
+
+    .ramp-bar.peak { background: var(--green); }
+
+    .ramp-yr {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .ramp-yr.peak { color: var(--green); }
+
+    .ramp-aside {
+      padding-left: 28px;
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 24px;
+      min-width: 110px;
+    }
+
+    .ramp-total-n {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .ramp-total-l {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ─── MEMORIES ───────────────────────────────────────────── */
+    #memories {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .mem-card {
+      padding: 40px 32px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mem-card:nth-child(3n) { border-right: none; }
+    .mem-card:nth-last-child(-n+3) { border-bottom: none; }
+    .mem-card:hover { background: var(--surface); }
+
+    .mem-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+      transform-origin: left;
+    }
+
+    .mem-card:hover::after { transform: scaleX(1); }
+
+    .mem-icon { font-size: 26px; margin-bottom: 20px; display: block; }
+
+    .mem-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .mem-text {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 768px) {
+      .memories-grid { grid-template-columns: 1fr; }
+      .mem-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .mem-card:nth-child(n) { border-right: none; }
+    }
+
+    /* ─── PEOPLE ─────────────────────────────────────────────── */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .person-card {
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .person-card:hover {
+      border-color: var(--green-border);
+      background: var(--surface);
+    }
+
+    .person-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .person-text {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .people-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    #gallery {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-intro {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-top: -32px;
+      margin-bottom: 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      grid-auto-flow: dense;
+      gap: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+    }
+
+    .gal-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .gal-item.tall   { grid-row: span 2; }
+    .gal-item.wide   { grid-column: span 2; }
+
+    /* Placeholder always rendered, img overlays it when loaded */
+    .gal-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--surface);
+    }
+
+    .gal-placeholder-icon {
+      font-size: 28px;
+      opacity: 0.25;
+    }
+
+    .gal-placeholder-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .gal-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .gal-item:hover img { transform: scale(1.05); }
+
+    .gal-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px 14px 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.8);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .gal-item:hover .gal-caption { opacity: 1; transform: translateY(0); }
+
+    /* note for photos */
+    .gallery-note {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      border-radius: 2px;
+      font-size: 12px;
+      color: var(--text-mid);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gallery-note-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* ─── LIGHTBOX ───────────────────────────────────────────── */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      color: rgba(255,255,255,0.5);
+      font-size: 22px;
+      cursor: pointer;
+      transition: color 0.15s;
+      font-weight: 300;
+    }
+
+    #lb-close:hover { color: white; }
+
+    #lb-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* ─── TIMELINE ───────────────────────────────────────────── */
+    #timeline {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .tl-list {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 0;
+    }
+
+    .tl-list::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 44px;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -33px;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      border: 2px solid var(--bg);
+    }
+
+    .tl-dot.lit {
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(46,200,102,0.12);
+    }
+
+    .tl-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .tl-date {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 500;
+      min-width: 56px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tl-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .tl-tag {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid var(--green-border);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .tl-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    .tl-desc em { color: var(--text); font-style: italic; }
+
+    /* ─── MEDIA / KUDOS ─────────────────────────────────────── */
+    #media-kudos {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .media-intro-text {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .shorts-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .short-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
+      width: 195px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .short-card:hover { border-color: var(--green-border); transform: translateY(-3px); }
+
+    .short-thumb-wrap {
+      position: relative;
+      width: 195px;
+      height: 347px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .short-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .short-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      transition: background 0.2s;
+    }
+
+    .short-card:hover .short-play-btn { background: rgba(46,200,102,0.35); }
+
+    .short-play-btn svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6)); }
+
+    .short-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 10px 14px;
+    }
+
+    .mem-watch-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 1px solid var(--green-border);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .mem-watch-link:hover { border-color: var(--green); }
+
+
+    /* ─── CLOSING LINKS ─────────────────────────────────────── */
+    .closing-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .closing-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 14px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .closing-link:hover {
+      border-color: var(--green-border);
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .closing-link-icon {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+      width: 20px;
+      text-align: center;
+      font-style: normal;
+    }
+
+    /* ─── CLOSING ────────────────────────────────────────────── */
+    #closing {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .closing-quote {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .closing-quote em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    .closing-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 48px;
+      max-width: 640px;
+    }
+
+    .closing-body p {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    .closing-body strong { color: var(--text); }
+
+    .closing-sig {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .closing-sig-line {
+      font-size: 18px;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .closing-sig-name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    .closing-sig-date {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .footer-motto {
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-sub .green { color: var(--green); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    .r {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.75s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .r.in { opacity: 1; transform: translateY(0); }
+
+    .rs > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .rs.in > *:nth-child(1)  { transition-delay: 0.04s; }
+    .rs.in > *:nth-child(2)  { transition-delay: 0.08s; }
+    .rs.in > *:nth-child(3)  { transition-delay: 0.12s; }
+    .rs.in > *:nth-child(4)  { transition-delay: 0.16s; }
+    .rs.in > *:nth-child(5)  { transition-delay: 0.20s; }
+    .rs.in > *:nth-child(6)  { transition-delay: 0.24s; }
+    .rs.in > *:nth-child(7)  { transition-delay: 0.28s; }
+    .rs.in > *:nth-child(8)  { transition-delay: 0.32s; }
+    .rs.in > *:nth-child(9)  { transition-delay: 0.36s; }
+
+    .rs.in > * { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress"></div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true">
+    <span id="lb-close" onclick="closeLb()" title="Close (Esc)">✕</span>
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <div class="hr-mark">H</div>
+      <span class="nav-name">Apoorve Goyal</span>
+    </div>
+    <span class="nav-right">HackerRank &nbsp;·&nbsp; 2021 → 2026</span>
+  </nav>
+
+
+  <!-- ──────────── HERO ──────────── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <p class="hero-eyebrow">HackerRank &nbsp;·&nbsp; A Farewell</p>
+    <h1 class="hero-name">Apoorve<br>Goyal</h1>
+    <p class="hero-dates">Jun 2021 &nbsp;→&nbsp; Jun 2026</p>
+    <div class="hero-roles">
+      <span class="role">SDE Intern 1</span>
+      <span class="sep">→</span>
+      <span class="role">SDE Intern 2</span>
+      <span class="sep">→</span>
+      <span class="role">SDE I</span>
+      <span class="sep">→</span>
+      <span class="role">SDE II</span>
+      <span class="sep">→</span>
+      <span class="role-final">Senior Software Engineer</span>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ──────────── STATS ──────────── -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid rs">
+        <div class="stat-cell">
+          <div class="stat-num green">1,851</div>
+          <div class="stat-label">Days at HackerRank</div>
+          <div class="stat-note">Jun 3, 2021 → Jun 26, 2026</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">458</div>
+          <div class="stat-label">Days as Intern</div>
+          <div class="stat-note">2 intern eras · Jun 2021 → Aug 2022</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">1,504</div>
+          <div class="stat-label">GitHub Contributions</div>
+          <div class="stat-note">Commits · PRs · Reviews</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Repos contributed to</div>
+          <div class="stat-note">Across interviewstreet org</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">582</div>
+          <div class="stat-label">Contributions in 2025</div>
+          <div class="stat-note">Peak year · the learn tab era</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Promotions</div>
+          <div class="stat-note">All earned, none requested</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">95</div>
+          <div class="stat-label">Linear issues done</div>
+          <div class="stat-note">of 144 assigned</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num green">1</div>
+          <div class="stat-label">Extra Mile Award</div>
+          <div class="stat-note">For customer impact that mattered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── CHAPTER 01 ──────────── -->
+  <section class="chapter" id="journey">
+    <div class="chapter-wrap">
+      <p class="chapter-num r">Chapter 01 · The Beginning</p>
+      <h2 class="pull-quote r">
+        five years.<br>
+        <em>not in terms of years,</em><br>
+        but in terms of learnings.
+      </h2>
+      <div class="chapter-body r">
+        <p>The honest version of this story is that I was found.</p>
+        <p>Third year of college. Writing code at odd hours, pushing things to GitHub the way most people do at that age, not really thinking much of it. Then one day an email shows up from HackerRank. Some script somewhere had apparently picked up my GitHub activity or maybe it was my charisma, who knows ;) and just like that there was this unexpected opportunity sitting in my inbox.</p>
+        <p>I knew it was a six month internship. I still had a one and a half year of college left after that. I had no idea how it would all work out. I just said yes.</p>
+        <p>What happened after that I could not have predicted. From the very first Zoom calls I was around people full of energy, full of excitement, genuinely happy to be there. Getting to know everyone's stories, their experience, the way they saw things. It changed something in me quietly. And without really planning it I made some of the best friends of my life. The kind that stick around.</p>
+        <p>Three of us ended up getting a second internship extension. HackerRank created a new position that didn't even exist before, just for the three of us. It felt genuinely generous in a way I didn't take for granted for a single day. Both intern eras were on CodeScreen and by that second stretch people had started calling me the "senior intern." Honestly that title meant the world to me. It wasn't sarcasm. It was warmth.</p>
+        <p>By the time I joined full time in January 2023 on the SkillUp team I was stepping into something I wasn't quite sure I was ready for yet. A zero to one product. Building from scratch with no blueprint and no playbook. I don't think many people get that kind of experience early on and I knew how lucky I was. Thinking about architecture, understanding what marketing actually means, growing into a senior role, mentoring people and slowly learning what it really means to make an impact in someone's life. I tried to do that as best I could.</p>
+        <p>I say I'm spoiled now because I genuinely don't know what I'll find outside. This place became home in a way I didn't see coming. You can reach out to just about anyone and people actually show up for each other. That's rarer than it sounds.</p>
+      </div>
+
+      <div class="chapter-rule r"></div>
+      <p class="section-eyebrow r">GitHub Contributions · interviewstreet org</p>
+
+      <div class="ramp-wrap r">
+        <div class="ramp-bars">
+          <div class="ramp-col">
+            <div class="ramp-n">50</div>
+            <div class="ramp-bar" style="height:9px;"></div>
+            <div class="ramp-yr">2021</div>
+          </div>
+          <div class="ramp-col">
+            <div class="ramp-n">63</div>
+            <div class="ramp-bar" style="height:11px;"></div>
+            <div class="ramp-yr">2022</div>
+          </div>
+          <div class="ramp-col">
+            <div class="ramp-n">197</div>
+            <div class="ramp-bar" style="height:34px;"></div>
+            <div class="ramp-yr">2023</div>
+          </div>
+          <div class="ramp-col">
+            <div class="ramp-n">436</div>
+            <div class="ramp-bar" style="height:75px;"></div>
+            <div class="ramp-yr">2024</div>
+          </div>
+          <div class="ramp-col">
+            <div class="ramp-n peak">582</div>
+            <div class="ramp-bar peak" style="height:100px;"></div>
+            <div class="ramp-yr peak">2025 ✦</div>
+          </div>
+          <div class="ramp-col">
+            <div class="ramp-n">176</div>
+            <div class="ramp-bar" style="height:30px;"></div>
+            <div class="ramp-yr">2026</div>
+          </div>
+        </div>
+        <div class="ramp-aside">
+          <div class="ramp-total-n">1,504</div>
+          <div class="ramp-total-l">total<br>contributions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── MEMORIES ──────────── -->
+  <section id="memories">
+    <div class="container">
+      <p class="section-eyebrow r">The Moments That Stayed</p>
+      <div class="memories-grid rs">
+
+        <div class="mem-card">
+          <span class="mem-icon">🔥</span>
+          <div class="mem-title">Hackathons</div>
+          <div class="mem-text">Zero clue and all the energy drinks bottled up in a conference room. We always started with nothing and came out with something real. That energy, random people, an idea, a deadline. I'll be chasing it for a while.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">✈️</span>
+          <div class="mem-title">Offsites</div>
+          <div class="mem-text">Area 83. Mulberry Shades. Discovery Village in 2023. We're a remote team so you'd think it would be nice but performative. It wasn't. I walked in thinking "team bonding thing." I walked out actually bonded. There's a difference.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🤝</span>
+          <div class="mem-title">Customer Moments</div>
+          <div class="mem-text">Demoing SkillUp and watching someone get value out of it live in front of you. Being on a call during a product launch window and helping a customer through an issue in real time and getting a genuine thank you from the other end. At some point the team gave me an Extra Mile Award and what I remember most about it is not the award itself but exactly that feeling of a real person's problem actually getting solved. That's the whole point of building things.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🎉</span>
+          <div class="mem-title">The Celebrations</div>
+          <div class="mem-text">Cakes for everything. Q3 ARR records. Hackerversaries. The Q3 celebration video in 2021. We were actually happy together, even then. And winning bets with Hari and getting chocolate cake delivered was peak intern life.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🎁</span>
+          <div class="mem-title">Secret Santas</div>
+          <div class="mem-text">Two years running. Year one: my Santa gave me a ukulele and a chord book. I was asked to sing a song in reverse. I did it. :)) Year two: my Santa was so generous. Trek bag, things I had actually asked for. The kind of place where you could be fully yourself. Singing backwards in a work channel and everyone cheering.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🌐</span>
+          <div class="mem-title">The Intern Website</div>
+          <div class="mem-text">The summer 2021 intern batch built and shipped <a href="https://www.hackerrank.com/interns/2021/summer" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none;font-style:italic;">hackerrank.com/interns/2021/summer</a> — a full team product, live on the internet, built by interns who had no reason to think small. We didn't.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">💬</span>
+          <div class="mem-title">Random Conversations</div>
+          <div class="mem-text">1,000+ interactions over five years. A random conversation that started out of nowhere and ended with a new friend you never planned for. I've learned something from every single one. That's the kind of environment that changes how you think.</div>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🎤</span>
+          <div class="mem-title">The Rap Battle</div>
+          <div class="mem-text">March 2022. PM vs Developer. I starred as THE DEVELOPER. It went on LinkedIn. It went places. Looking back, it's objectively one of the funniest things I've ever done at work. I cringe a little. I cherish all of it a lot. :)) People still quote it back at the most unexpected moments and honestly that never gets old.</div>
+          <a class="mem-watch-link" href="https://www.youtube.com/watch?v=cTJeUTzSOHo" target="_blank" rel="noopener">▶ Watch the legendary rap battle</a>
+        </div>
+
+        <div class="mem-card">
+          <span class="mem-icon">🐢</span>
+          <div class="mem-title">Vishnu &amp; Vasu</div>
+          <div class="mem-text">My babies. They made the Personal Milestones slide at an all-hands, right alongside teammates' puppies. A place that celebrates your turtles is a place worth showing up to every day. I showed up 1,851 times.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── MARKETING KUDOS ──────────── -->
+  <section id="media-kudos">
+    <div class="chapter-wrap">
+      <p class="chapter-num r">Caught on Camera</p>
+      <h2 class="pull-quote r" style="font-size:clamp(26px,4vw,42px); margin-bottom:24px;">
+        Some candid shots<br>that somehow made the <em>cut.</em>
+      </h2>
+      <p class="media-intro-text r">Somewhere between the deadlines and the chai breaks, the marketing team had a camera pointed at us. We had no idea how it would turn out. Turns out pretty well. These two shorts are proof that some of the best frames are the unplanned ones.</p>
+      <div class="shorts-row r">
+        <a class="short-card short-thumb-link" href="https://www.youtube.com/shorts/QovFtBCFOeQ" target="_blank" rel="noopener" aria-label="Watch Short 1 on YouTube">
+          <div class="short-thumb-wrap">
+            <img src="https://img.youtube.com/vi/QovFtBCFOeQ/hqdefault.jpg" alt="HackerRank Short" class="short-thumb-img" />
+            <div class="short-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="short-label">Short · Watch on YouTube ↗</div>
+        </a>
+        <a class="short-card short-thumb-link" href="https://www.youtube.com/shorts/X64Zybj1oPY" target="_blank" rel="noopener" aria-label="Watch Short 2 on YouTube">
+          <div class="short-thumb-wrap">
+            <img src="https://img.youtube.com/vi/X64Zybj1oPY/hqdefault.jpg" alt="HackerRank Short" class="short-thumb-img" />
+            <div class="short-play-btn">
+              <svg viewBox="0 0 24 24" fill="white" width="32" height="32"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="short-label">Short · Watch on YouTube ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── CHAPTER 02 ──────────── -->
+  <section class="chapter" id="people-chapter" style="border-top: 1px solid var(--border);">
+    <div class="chapter-wrap">
+      <p class="chapter-num r">Chapter 02 · The People</p>
+      <h2 class="pull-quote r">
+        There are people here<br>
+        I'll be <em>playing board games</em><br>
+        with my entire life.
+      </h2>
+      <div class="chapter-body r">
+        <p>The biggest thing I'm taking from this place isn't anything I shipped. It's the people. And I want to say it to your face, even if your face is a small rectangle on my screen :&nbsp;)</p>
+        <p>I could try to list everyone but I'd definitely miss someone and feel terrible about it. So instead, a few things that are true:</p>
+      </div>
+
+      <div class="people-grid rs">
+        <div class="person-card">
+          <div class="person-text">There's someone who brought me into SkillUp. I don't think they know how much that single moment changed the trajectory of my next three years.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-text">There's someone whose feedback made me sharper every single time. Every time they trusted me with something, I tried to be worthy of it. I hope I was.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-text">There are late-night conversations about product and vision that genuinely changed how I think. I carry those with me.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-text">There's a first reviewer. A first co-author. A last manager. That's not a coincidence. That's what five years of genuinely good collaboration looks like.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-text">There are people who were in the trenches with me every single day. You know who you are. The work we built together. I'll think about all of it.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-text">There's someone who left before me and mentioned my name in their list of people who mattered. Full circle and am just so grateful for that</div>
+        </div>
+      </div>
+
+      <div class="chapter-rule r" style="margin-top:48px;"></div>
+      <div class="chapter-body r" style="margin-top:24px;">
+        <p>I have a list I've built over time. 65+ people, including folks who've already moved on from here. If we ever talked, if we ever worked on something together, if you ever made me think differently, you're on it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── GALLERY ──────────── -->
+  <section id="gallery">
+    <div class="container">
+      <p class="section-eyebrow r">The Moments in Pixels</p>
+      <p class="gallery-intro r">Five years. A lot of rooms. A lot of faces.</p>
+      <div class="gallery-grid">
+
+        <!-- ── THE BEGINNING ──────────────────────────────── -->
+        <!-- wide(1-2) + regular(3) + tall(4, rows 1-2) -->
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Intern Batch</div></div>
+          <img src="photos/interns_summer_2021.JPG" alt="Intern Batch" loading="lazy">
+          <div class="gal-caption">The Intern Batch · Summer 2021</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Day One</div></div>
+          <img src="photos/joining_kit.jpg" alt="Day One Kit" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">Day One · The HackerRank Kit</div>
+        </div>
+
+        <div class="gal-item tall" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">46M Milestone</div></div>
+          <img src="photos/quarterly_miltestone_celebration.webp" alt="46M Milestone" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">46M Milestone · Celebrating the Intern Way</div>
+        </div>
+
+        <!-- row 2: col 3 taken by tall above; fill cols 1-2 with wide + col 3 empty -->
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">The Desk</div></div>
+          <img src="photos/IMG-20211029-WA0027.jpg" alt="The Desk Oct 2021" loading="lazy">
+          <div class="gal-caption">The Desk · Oct 2021</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Diwali 2021</div></div>
+          <img src="photos/diwali_gift.jpg" alt="Diwali 2021" loading="lazy">
+          <div class="gal-caption">Diwali 2021 · First Gift from HackerRank</div>
+        </div>
+
+        <!-- wide across 1-2, regular 3, regular 4 -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Intern Crew</div></div>
+          <img src="photos/interns_with_hari.jpg" alt="Intern Crew" loading="lazy">
+          <div class="gal-caption">Intern Batch · The Full Crew</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Conference Room</div></div>
+          <img src="photos/interns_conference_room_selfi.jpg" alt="Conference Room Selfie" loading="lazy">
+          <div class="gal-caption">Conference Room Selfie</div>
+        </div>
+
+        <!-- ── INTERN EVENTS ───────────────────────────────── -->
+        <!-- wide(1-2) + regular(3) + [col 4 from tall above] -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Area 83 Team Building</div></div>
+          <img src="photos/area51_team_building.JPG" alt="Area 83 Team Building" loading="lazy">
+          <div class="gal-caption">Area 83 · Team Building Games</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Area 83</div></div>
+          <img src="photos/area51_intern.png" alt="Area 83 Archery" loading="lazy">
+          <div class="gal-caption">Area 83 Offsite · Archery &amp; Wild Times</div>
+        </div>
+
+        <!-- wide(1-2) + tall(3, rows) + regular(4) -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Intern Brainstorm</div></div>
+          <img src="photos/intern-brainstorming-with-karthik-2022.jpg" alt="Intern Brainstorm 2022" loading="lazy">
+          <div class="gal-caption">Intern Brainstorm · 2022</div>
+        </div>
+
+        <div class="gal-item tall" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Secret Santa</div></div>
+          <img src="photos/secret_santa_ukulele.webp" alt="Secret Santa Ukulele" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">Secret Santa · Ukulele &amp; Chord Book</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Human Foosball</div></div>
+          <img src="photos/human_foosball.jpg" alt="Human Foosball" loading="lazy">
+          <div class="gal-caption">Human Foosball · We Played Hard</div>
+        </div>
+
+        <!-- row 2 of tall: cols 1-2 free -->
+        <div class="gal-item tall" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Thanks Hari</div></div>
+          <img src="photos/winning_bets.webp" alt="Thanks Hari Cake" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">Winning Bets · Chocolate Cake</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">The Interns' SignOff</div></div>
+          <img src="photos/intern-signoff-salutes-2022.jpg" alt="Team Salutes" loading="lazy">
+          <div class="gal-caption">The Interns' SignOff · Every Hand Raised</div>
+        </div>
+
+        <!-- ── SCREEN TEAM ─────────────────────────────────── -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Dream Team</div></div>
+          <img src="photos/screen_team_first_office_visit.jpg" alt="Dream Team" loading="lazy">
+          <div class="gal-caption">Dream Team · Caffeine + Code</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Hackathon</div></div>
+          <img src="photos/octane.jpg" alt="OCTANE Hackathon" loading="lazy">
+          <div class="gal-caption">OCTANE Hackathon</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Team Dinner</div></div>
+          <img src="photos/screen_team_dinner.jpg" alt="Team Dinner" loading="lazy">
+          <div class="gal-caption">Team Dinner · The Unofficial Meetings</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Varkala</div></div>
+          <img src="photos/varkala_screen_team.jpg" alt="Varkala Diaries" loading="lazy">
+          <div class="gal-caption">Varkala Diaries · Good People, Good Views</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Kayaking</div></div>
+          <img src="photos/screen_team_kayaking.jpg" alt="Kayaking" loading="lazy">
+          <div class="gal-caption">Kayaking · Chikkamagaluru</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Mulberry Shades Breakfast</div></div>
+          <img src="photos/mulberry_shades_breakfast.jpg" alt="Mulberry Shades Breakfast" loading="lazy">
+          <div class="gal-caption">Mulberry Shades · Breakfast</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Mulberry Shades Party</div></div>
+          <img src="photos/hackerrank_mulberry_shades_party.jpg" alt="Mulberry Shades Party" loading="lazy">
+          <div class="gal-caption">Mulberry Shades Party</div>
+        </div>
+
+        <!-- ── FTE ERA ─────────────────────────────────────── -->
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Two Badges</div></div>
+          <img src="photos/id_cards.jpg" alt="Intern to FTE Badges" loading="lazy">
+          <div class="gal-caption">Intern → Employee · Two Cards</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Laser Tag</div></div>
+          <img src="photos/laser-tag-2023.png" alt="Laser Tag" loading="lazy">
+          <div class="gal-caption">Laser Tag · No Mercy</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Faces I Won't Forget</div></div>
+          <img src="photos/some_forgotten_faces.jpg" alt="Faces I Won't Forget" loading="lazy">
+          <div class="gal-caption">Faces I Won't Forget</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Delhi Meetup</div></div>
+          <img src="photos/hackerrank_delhi_meetup.jpg" alt="HackerRank Delhi Meetup" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">Delhi Meetup</div>
+        </div>
+
+        <!-- ── SKILLUP ERA ─────────────────────────────────── -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Vishnu &amp; Vasu</div></div>
+          <img src="photos/screenshot-milestones-2024.png" alt="Vishnu and Vasu All-Hands" loading="lazy">
+          <div class="gal-caption">Vishnu &amp; Vasu · My Babies Made the All-Hands Slide</div>
+        </div>
+
+        <div class="gal-item tall" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">SkillUp</div></div>
+          <img src="photos/skillup_product.jpg" alt="SkillUp Product" loading="lazy" style="object-position:center top;">
+          <div class="gal-caption">SkillUp · What We Built</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Customer Visit</div></div>
+          <img src="photos/customer-visit-1.png" alt="SkillUp Customer Visit" loading="lazy">
+          <div class="gal-caption">SkillUp Day · A Customer Visit</div>
+        </div>
+
+        <!-- row 2 of tall: cols 1-2 free -->
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Customer Visit 2</div></div>
+          <img src="photos/customer_visit_2.jpg" alt="Customer Visit Nov 2025" loading="lazy">
+          <div class="gal-caption">Customer Visit · November 2025</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">SkillUp & Tooling</div></div>
+          <img src="photos/skillup_and_content_tooing_team.jpg" alt="SkillUp and Tooling Team" loading="lazy">
+          <div class="gal-caption">SkillUp &amp; Tooling Team</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">SkillUp Team v1</div></div>
+          <img src="photos/skillup_team_v1.jpg" alt="SkillUp Team" loading="lazy">
+          <div class="gal-caption">SkillUp Team · Edition One</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">SkillUp Team v2</div></div>
+          <img src="photos/skillup_team_v2.jpg" alt="SkillUp Team Night Out" loading="lazy">
+          <div class="gal-caption">SkillUp Team · Night Out</div>
+        </div>
+
+        <!-- ── THE LAST CHAPTER ───────────────────────────── -->
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Ed Sheeran Concert</div></div>
+          <img src="photos/ed-sheeran-concert-2025.jpg" alt="Ed Sheeran Concert 2025" loading="lazy">
+          <div class="gal-caption">Ed Sheeran Concert · 2025</div>
+        </div>
+
+        <div class="gal-item" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Bowling</div></div>
+          <img src="photos/bowling.jpg" alt="Bowling Night" loading="lazy">
+          <div class="gal-caption">Bowling Night · Jan 2026</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Behind the Scenes</div></div>
+          <img src="photos/IMG_20260128_160339.jpg" alt="Behind the Scenes Shoot" loading="lazy">
+          <div class="gal-caption">Behind the Scenes · Jan 2026</div>
+        </div>
+
+        <div class="gal-item wide" onclick="openLb(this)">
+          <div class="gal-placeholder"><div class="gal-placeholder-icon">📸</div><div class="gal-placeholder-label">Farewell Salutes</div></div>
+          <img src="photos/vijaya-farewell.jpg" alt="Farewell Salutes" loading="lazy">
+          <div class="gal-caption">Farewell Salutes · The HackerRank Way</div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── CLOSING ──────────── -->
+  <section id="closing">
+    <div class="chapter-wrap">
+      <p class="chapter-num r">Chapter 03 · So Long</p>
+      <div class="closing-quote r">
+        I'm not<br><em>disappearing.</em>
+      </div>
+      <div class="closing-body r">
+        <p>My last few weeks here were spent writing four knowledge transfer documents: CodeRunner, AuthZ, Next Gen Certifications, infrastructure. Not because anyone asked. Because I've seen what happens when knowledge just disappears with a person, and I didn't want to do that to this team.</p>
+        <p>I'm leaving with a full heart. There's no word for what I'm going to miss. The random conversations that started at noon and went somewhere unexpected, the voice notes, the memes, the moments that happened without anyone planning them. I'll miss all of it. Genuinely and happily.</p>
+        <p>This place gave me more than I could have asked for. Good work. Good people. A version of myself I'm proud of. That stays.</p>
+        <p>Find me wherever you find me. My DMs are open. I'll pick up the phone. <strong>lmk</strong> if you ever want to catch up, seriously, anytime :&nbsp;)</p>
+        <p>I'm based in Delhi NCR. So if you're ever passing through, need a place to crash, or just want to grab a coffee with an ex-HackerRanker who will absolutely make you sit through his whole story again. one call away.</p>
+      </div>
+
+      <div class="closing-links r">
+        <a href="https://github.com/apoorve73" target="_blank" rel="noopener" class="closing-link">
+          <span class="closing-link-icon">⌥</span>
+          <span>github.com/apoorve73</span>
+        </a>
+        <a href="https://www.linkedin.com/in/apoorve-goyal/" target="_blank" rel="noopener" class="closing-link">
+          <span class="closing-link-icon">in</span>
+          <span>linkedin.com/in/apoorve-goyal</span>
+        </a>
+        <a href="mailto:apoorve73@gmail.com" class="closing-link">
+          <span class="closing-link-icon">@</span>
+          <span>apoorve73@gmail.com</span>
+        </a>
+      </div>
+
+      <div class="closing-sig r">
+        <div class="closing-sig-line">
+          Thank you for five years of trusting me with real things.<br>
+          Thank you for being people worth missing.
+        </div>
+        <div class="closing-sig-name">— Apoorve</div>
+        <div class="closing-sig-date">June 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── FOOTER ──────────── -->
+  <footer>
+    <div class="footer-motto">"Learning by making others learn."</div>
+    <div class="footer-sub">
+      apoorve73@gmail.com &nbsp;&middot;&nbsp; 2021–2026 &nbsp;&middot;&nbsp;
+      <span class="green">✦</span> astrophile
+    </div>
+  </footer>
+
+  <script>
+    // ── Reading progress ──────────────────────────────────────
+    const prog = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      prog.style.width = Math.min(100, Math.round(pct * 100)) + '%';
+    }, { passive: true });
+
+    // ── Scroll reveal ─────────────────────────────────────────
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.r, .rs').forEach(el => io.observe(el));
+
+    // ── Lightbox ──────────────────────────────────────────────
+    const lb     = document.getElementById('lightbox');
+    const lbImg  = document.getElementById('lb-img');
+    const lbCap  = document.getElementById('lb-caption');
+
+    function openLb(item) {
+      const img = item.querySelector('img');
+      if (!img || img.naturalWidth === 0) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = item.querySelector('.gal-caption')?.textContent || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+  </script>
+
+</body>
+</html>
